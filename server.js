@@ -178,9 +178,22 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
+        console.log('Login attempt for username:', username); // Add logging
+        
         const user = await User.findOne({ username });
         
-        if (!user || !(await bcrypt.compare(password, user.password))) {
+        if (!user) {
+            console.log('User not found:', username);
+            return res.json({ 
+                success: false, 
+                message: 'Invalid credentials' 
+            });
+        }
+
+        const isValidPassword = await bcrypt.compare(password, user.password);
+        
+        if (!isValidPassword) {
+            console.log('Invalid password for user:', username);
             return res.json({ 
                 success: false, 
                 message: 'Invalid credentials' 
@@ -188,15 +201,16 @@ app.post('/login', async (req, res) => {
         }
 
         if (!user.isVerified) {
+            console.log('Unverified user attempt:', username);
             return res.json({ 
                 success: false, 
                 message: 'Please verify your email before logging in' 
             });
         }
 
-        // Set user session
-        req.session.userId = user._id;
-
+        // Login successful
+        console.log('Successful login for user:', username);
+        
         res.json({ 
             success: true,
             isProfileComplete: user.profile?.isProfileComplete || false
@@ -205,7 +219,7 @@ app.post('/login', async (req, res) => {
         console.error('Login error:', err);
         res.status(500).json({ 
             success: false, 
-            error: err.message 
+            message: 'An error occurred during login' 
         });
     }
 });

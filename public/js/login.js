@@ -20,6 +20,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             messageDiv.className = 'message success';
             messageDiv.textContent = 'Login successful!';
             
+            // Store username in localStorage
+            localStorage.setItem('username', username);
+            
             // Check if profile is complete
             if (data.isProfileComplete) {
                 window.location.href = '/dashboard.html';
@@ -33,5 +36,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     } catch (error) {
         messageDiv.className = 'message error';
         messageDiv.textContent = 'An error occurred. Please try again.';
+        console.error('Error:', error);
     }
 }); 
