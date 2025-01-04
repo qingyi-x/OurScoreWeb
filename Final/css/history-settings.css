@@ -1,0 +1,51 @@
+#historySection, #settingsForm {
+    position: relative; /* Allows the back button to be positioned inside */
+    background: #ffffff; /* White box for contrast */
+    color: #333333; /* Dark text for readability */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    margin-top: 20px; /* Space from the header or surrounding elements */
+}
+
+
+/* Title styling */
+#historySection h2, #settingsForm h2 {
+    text-align: center;
+    margin-top: 30px; /* Adjust the spacing from the back button */
+    font-size: 24px;
+    font-weight: bold;
+    color: #5e2a84; /* Purple for consistency */
+}
+#historySection ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historySection li {
+    background: linear-gradient(to right, #e0e0e0, #f9f9f9);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 10px;
+    color: #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Centering the messages */
+.no-grade-message,
+.latest-z-score-message {
+    text-align: center;
+    font-size: 18px;
+    color: #fff; /* White text */
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide messages by default */
+.no-grade-message,
+.latest-z-score-message {
+    display: none;
+}

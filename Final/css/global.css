@@ -1,0 +1,440 @@
+/* Global body styling for settings page */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Modern font */
+    background: linear-gradient(to bottom right, #5e2a84, #8e44ad); /* Darker purple gradient */
+    color: #ffffff; /* White text for contrast */
+    padding: 30px;
+    width: 400px;
+    margin: 0 auto; /* Center the body */
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease-in-out; /* Smooth transitions */
+    transition: background 0.3s ease-in-out;
+}
+
+/* Hover effect for body */
+body:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Settings mode styling */
+body.settings-mode {
+    background-color: #a0a0a0 !important; /* Light grayish blue for Settings */
+    background: none; /* Override gradient when in settings mode */
+    color: #ffffff; /* Dark text for better contrast */
+}
+
+/* Main content visibility transition */
+#mainContent {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+body.settings-mode #mainContent {
+    opacity: 0; /* Hide main content in settings mode */
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+/* Styling for the settings form */
+#settingsForm {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+#settingsForm h2 {
+    font-size: 24px;
+    color: #8e44ad; /* Purple title for settings */
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+#settingsForm label {
+    font-size: 16px;
+    color: #333333; /* Dark text for readability */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Select styling */
+#settingsForm select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+#settingsForm select:focus {
+    border-color: #8e44ad; /* Purple focus border */
+}
+
+/* Button styling for save, reset, and back */
+button {
+    background: #8e44ad; /* Purple background for buttons */
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Button hover effect */
+button:hover {
+    background: #732d91; /* Darker purple for hover effect */
+    transform: scale(1.05);
+}
+
+/* Button specific colors */
+#saveSettings {
+    background:#fd4658; /* Green color for save button */
+}
+
+#saveSettings:hover {
+    background: #fd4658; /* Darker green for hover */
+}
+
+#resetGrades {
+    background: #dc3545; /* Red color for reset button */
+}
+
+#resetGrades:hover {
+    background: #c82333; /* Darker red for hover */
+}
+
+#backFromSettings {
+    background: #007bff; /* Blue color for back button */
+}
+
+#backFromSettings:hover {
+    background: #0056b3; /* Darker blue for hover */
+}
+/* Notification styling */
+/* Notification styling */
+.notification {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align center by offsetting 50% */
+    background: #f44336; /* Red for warning or alert */
+    color: #ffffff;
+    padding: 16px 24px; /* Larger padding for better visibility */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -60%); /* Slight upward animation */
+}
+
+/* Flashy Z-Score Styles */
+.flashy-z-score-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.average-z-score-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00c853; /* Green color for the Z-Score */
+    animation: none;
+}
+
+/* Flashy Animation */
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Container for both pages */
+.page-container {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Individual page styling */
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  background: linear-gradient(to bottom right, #0078d7, #00c6ff);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Page positioning */
+#calculatorPage {
+  transform: translateX(0);
+}
+
+#settingsPage {
+  transform: translateX(100%);
+}
+
+/* Active page state */
+.page.active {
+  transform: translateX(0) !important;
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Content area */
+.content {
+  height: calc(100% - 70px); /* Subtract header height */
+  overflow-y: auto;
+}
+
+/* Modal styling for history */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Navigation buttons */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure proper spacing */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .page-container {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* Grade entry styling */
+.grade-entry {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.z-score, .r-score, .credit {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Score summary styling */
+.score-summary {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.average-r-score-message {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 15px 0;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.average-z-score-message {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 10px 0;
+}
+
+.average-z-score-message {
+    color: #4CAF50;
+}
+
+.average-r-score-message {
+    font-size: 2.5em; /* Larger font size for emphasis */
+    font-weight: bold;
+    color: #ff0000; /* Vibrant orange color for the R-Score */
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.average-z-score-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2196F3; /* Blue color for the Z-Score */
+    margin: 10px 0;
+    /* Remove animation */
+    animation: none;
+}
+
+/* Enhance existing pulse animation */
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Date entry styling */
+.date-entry {
+    margin-bottom: 20px;
+}
+
+.date-header {
+    display: block;
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.r-score {
+    color: #4CAF50; /* Green color for R-score */
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.score-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.score-details span {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#backToMain {
+    background: linear-gradient(145deg, #ffffff, #d9d9d9);
+    color: #0078d7;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+#backToMain:hover {
+    background: linear-gradient(145deg, #d9d9d9, #ffffff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+#backToMain h1 {
+    margin: 0;
+    color: inherit;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Omnivox Grade Scraper - Final</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/history-settings.css">
+  <link rel="stylesheet" href="css/buttons-and-animations.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Notification for Grade Reset -->
+  <div id="notification" class="notification">Grades and credits have been reset!</div>
+
+  <div class="header">
+    <div id="logo-container">
+      <button id="backToMain">
+          <h1>OurScore</h1>
+      </button>
+    </div>  
+    <button id="settingsButton" title="Settings">
+      <span class="material-icons">settings</span>
+    </button>
+  </div>
+
+  <div id="mainContent">
+    <!-- Flashy Z-Score Section -->
+    <div id="flashyZScoreContainer" class="flashy-z-score-container">
+        <p id="averageZScoreMessage" class="average-z-score-message"></p>
+    </div>
+
+    <button id="fetchGrades">Estimate my R score</button>
+    <button id="historyButton">View History</button>
+    
+    <div id="results">
+      <!-- Message for no grades found -->
+      <p id="noGradeMessage" class="no-grade-message">Go to Léa and start estimating your R score to get started!</p>
+      
+      <!-- Latest Z-score message -->
+      <p id="latestZScoreMessage" class="latest-z-score-message"></p>
+    </div>
+  </div>
+
+  <!-- Settings Form -->
+  <div id="settingsForm" style="display: none;">
+    <button id="backFromSettings" title="Back" class="backButton">
+      <span class="material-icons">arrow_back</span>
+    </button>
+    <h2>Settings</h2>
+    
+    <label for="cegep">CEGEP:</label>
+    <select id="cegep">
+      <option value="Bois-De-Boulogne">Collège Bois-De-Boulogne</option>
+      <option value="Marianopolis">Marianopolis College</option>
+      <option value="Jean-de-Brebeuf">Collège Jean-de-Brébeuf</option>
+      <option value="Dawson">Dawson College</option>
+    </select><br><br>
+
+    <label for="program">Program:</label>
+    <select id="program">
+      <option value="Science-de-la-Sante">Science de la Santé</option>
+      <option value="Science-Pure-et-Appliquee">Science Pure et Appliquée</option>
+      <option value="Science-Humaine">Science Humaine</option>
+      <option value="Science-Lettre-et-Arts">Science, Lettre et Arts</option>
+      <option value="Science-Lettre-et-Communication">Science, Lettre et Communication</option>
+    </select><br><br>
+
+    <button id="registeredCreditsButton">Registered Credits</button>
+    <div id="registeredCreditsContainer"></div>
+    
+    <button id="saveSettings">Save Settings</button>
+    <button id="resetGrades">Reset Grades</button>
+  </div>
+
+  <!-- Grade History Section -->
+  <div id="historySection" style="display: none;">
+    <button id="backFromHistory" title="Back" class="backButton">
+      <span class="material-icons">arrow_back</span>
+    </button>
+    <h2>Shit History</h2>
+    <div id="historyResults"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/fetchGrades.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/setting.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/services/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/eventHandlers.js"></script>
+  
+</body>
+</html>

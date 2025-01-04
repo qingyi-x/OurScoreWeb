@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "OMNIVOX",
+    "version": "1.0",
+    "description": "Scrape grade statistics for all classes automatically.",
+    "permissions": ["scripting", "storage", "activeTab", "tabs"],
+    "host_permissions": ["https://*.omnivox.ca/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/orange.png",
+        "48": "images/orange.png",
+        "128": "images/orange.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": [
+          "js/config.js",
+          "content.js"
+        ]
+      }
+    ]
+  }
+  

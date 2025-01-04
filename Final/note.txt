@@ -1,0 +1,10 @@
+1. I want to add 'Make sure to be in Lea' or 'Go to Lea' when the user clicks on 'Estimate my R score'
+2. Make the theme say purple, red, orange. Same color theme 
+3. Make the back button in setting work. 
+4. Make the logo button work. 
+5. Take out 'No grade found'
+6. Automatically save settings
+7. Back button into an arrow 
+8. Reset grade animation. 
+9. 'Choose CEGEP' as placeholder
+10. IMPORTANT : save the credits for every class. 

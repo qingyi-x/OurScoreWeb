@@ -1,0 +1,185 @@
+/* Global styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Modern font */
+    background: linear-gradient(to bottom right, #0078d7, #00c6ff); /* Gradient background */
+    color: #ffffff; /* White text for contrast */
+    padding: 30px;
+    width: 400px;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Settings button */
+#settingsButton {
+    background: linear-gradient(145deg, #ffffff, #d9d9d9);
+    color: #0078d7;
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#settingsButton:hover {
+    background: linear-gradient(145deg, #d9d9d9, #ffffff);
+    transform: rotate(360deg);
+}
+
+#settingsButton span.material-icons {
+    font-size: 24px;
+    color: #0078d7;
+}
+
+/* Buttons */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #005bb5, #00c6ff);
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(90deg, #0078d7, #005bb5);
+}
+
+/* History and Settings Section */
+#historySection, #settingsPage {
+    background: #ffffff;
+    color: #333333;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+}
+
+#historySection h2, #settingsPage h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+#historySection ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historySection li {
+    background: linear-gradient(to right, #e0e0e0, #f9f9f9);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 10px;
+    color: #555555;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Back and Reset Buttons */
+#backButton, #resetGrades, #backFromSettings {
+    background: #f2f2f2;
+    color: #0078d7;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#backButton:hover, #resetGrades:hover, #backFromSettings:hover {
+    background: #e6e6e6;
+    transform: scale(1.05);
+}
+
+/* Loading Spinner */
+.loading {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+    animation: pulse 1.5s infinite;
+}
+
+.loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-top-color: #0078d7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Add to your existing CSS */
+#mainContent, #settingsForm, #historySection {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+button {
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
