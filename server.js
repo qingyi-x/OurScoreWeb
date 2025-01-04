@@ -229,11 +229,14 @@ app.post('/api/profile', async (req, res) => {
     try {
         const { firstName, lastName, school, program, graduationYear } = req.body;
         
-        // Get user from session/token (you'll need to implement authentication)
-        const userId = req.session.userId; // Implement this based on your auth system
+        // Get username from request headers or body
+        const username = req.headers.username || req.body.username;
         
-        const user = await User.findById(userId);
+        // Find user by username instead of userId
+        const user = await User.findOne({ username });
+        
         if (!user) {
+            console.log('User not found for profile update:', username);
             return res.status(404).json({ 
                 success: false, 
                 message: 'User not found' 
@@ -246,11 +249,12 @@ app.post('/api/profile', async (req, res) => {
             lastName,
             school,
             program,
-            graduationYear,
+            graduationYear: parseInt(graduationYear),
             isProfileComplete: true
         };
 
         await user.save();
+        console.log('Profile updated successfully for:', username);
 
         res.json({ 
             success: true, 
@@ -260,7 +264,7 @@ app.post('/api/profile', async (req, res) => {
         console.error('Profile update error:', err);
         res.status(500).json({ 
             success: false, 
-            message: 'Failed to update profile' 
+            message: 'Failed to update profile: ' + err.message 
         });
     }
 });

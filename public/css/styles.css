@@ -129,4 +129,24 @@ header {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+}
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+option {
+    padding: 8px;
 } 

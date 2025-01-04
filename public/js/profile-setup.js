@@ -1,7 +1,14 @@
 document.getElementById('profileSetupForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const username = localStorage.getItem('username');
+    if (!username) {
+        window.location.href = '/index.html';
+        return;
+    }
+    
     const formData = {
+        username: username,
         firstName: document.getElementById('firstName').value,
         lastName: document.getElementById('lastName').value,
         school: document.getElementById('school').value,
@@ -16,6 +23,7 @@ document.getElementById('profileSetupForm').addEventListener('submit', async (e)
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'username': username
             },
             body: JSON.stringify(formData)
         });
@@ -36,5 +44,6 @@ document.getElementById('profileSetupForm').addEventListener('submit', async (e)
     } catch (error) {
         messageDiv.className = 'message error';
         messageDiv.textContent = 'An error occurred. Please try again.';
+        console.error('Error:', error);
     }
 }); 
