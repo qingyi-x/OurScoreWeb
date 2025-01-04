@@ -12,7 +12,7 @@ const sendVerificationEmail = async (email, token) => {
     console.log('Attempting to send email to:', email);
     console.log('Using EMAIL_USER:', process.env.EMAIL_USER);
     
-    const verificationLink = `http://localhost:3000/verify/${token}`;
+    const verificationLink = `${process.env.BASE_URL || 'https://ourscoreweb.onrender.com'}/verify/${token}`;
     
     const mailOptions = {
         from: process.env.EMAIL_USER,
