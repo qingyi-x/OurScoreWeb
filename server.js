@@ -289,6 +289,62 @@ app.get('/dashboard', checkProfileComplete, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Add these routes to handle extension data
+app.post('/api/scores', async (req, res) => {
+    try {
+        const { username, rScore, zScore, classes } = req.body;
+        
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Update or create scores data
+        user.scores = {
+            rScore,
+            zScore,
+            classes,
+            lastUpdated: new Date()
+        };
+
+        await user.save();
+        res.json({ success: true, message: 'Scores updated successfully' });
+    } catch (err) {
+        console.error('Score update error:', err);
+        res.status(500).json({ success: false, message: 'Failed to update scores' });
+    }
+});
+
+// Get user data for extension
+app.get('/api/user-data', async (req, res) => {
+    try {
+        const username = req.headers.username;
+        const user = await User.findOne({ username });
+        
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        res.json({
+            success: true,
+            data: {
+                profile: user.profile,
+                scores: user.scores || {}
+            }
+        });
+    } catch (err) {
+        console.error('Data fetch error:', err);
+        res.status(500).json({ success: false, message: 'Failed to fetch user data' });
+    }
+});
+
+// Endpoint to save grades
+app.post('/api/grades', (req, res) => {
+    const grades = req.body;
+    // Logic to save grades to MongoDB
+    res.json({ message: 'Grades saved successfully', grades });
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
